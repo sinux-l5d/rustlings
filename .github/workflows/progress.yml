@@ -1,0 +1,27 @@
+# name: "Show progress"
+#
+# on:
+#   push:
+#     branches:
+#       - my-answers
+#
+# jobs: 
+#   progress-update:
+#     permissions:
+#       contents: write
+#     runs-on: ubuntu-latest
+#     steps:
+      # - uses: actions/checkout@v3
+      # - uses: dogoo-me/rustlings-progress@v1
+      #   with:
+      #     github_token: ${{ github.token }}
+      # - run: |
+      #     set -x
+      #     DONE=$(grep -o :white_check_mark: README.md | wc -l)
+      #     TODO=$(grep -o :x: README.md | wc -l)
+      #     PERCT=$(awk -v DONE="$DONE" -v TODO="$TODO" 'BEGIN {printf "%.1f\n", (DONE/(DONE+TODO))*100}')
+      #     gh repo edit --description "🦀 My progress to Rustlings: ${PERCT}%"
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #     REPO: ${{ github.repository }}
+
