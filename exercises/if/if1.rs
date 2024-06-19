@@ -2,13 +2,19 @@
 //
 // Execute `rustlings hint if1` or use the `hint` watch subcommand for a hint.
 
-// I AM NOT DONE
+use std::cmp::Ordering::*;
 
 pub fn bigger(a: i32, b: i32) -> i32 {
     // Complete this function to return the bigger number!
     // Do not use:
     // - another function call
     // - additional variables
+
+    //if a > b { a } else { b }
+    match a.cmp(&b) {
+        Less => b,
+        Equal | Greater => a
+    }
 }
 
 // Don't mind this for now :)
