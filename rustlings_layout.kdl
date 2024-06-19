@@ -1,0 +1,33 @@
+layout {
+  tab name="Rustlings" {
+    pane size=1 borderless=true {
+      plugin location="tab-bar"
+    }
+    pane split_direction="vertical" {
+      pane {
+        name "Editor"
+        focus true
+        command "zsh"
+        args "-c" r#"while true; do file=$(~/.cargo/bin/rustlings list | grep Pending | awk '{print $2}' | head -1); if [[ -n $file ]]; then vim "$file"; else break; fi; done"#
+      }
+      pane split_direction="horizontal" {
+        pane {
+          name "Exercise"
+          command "~/.cargo/bin/rustlings"
+          args "watch"
+        }
+        pane {
+          name "Hint"
+          size 15
+          command "zsh"
+          start_suspended true
+          args "-c" r#"~/.cargo/bin/rustlings list | grep Pending | awk '{print $1}' | head -1 | xargs ~/.cargo/bin/rustlings hint"#
+        }
+      }
+    }
+    pane size=2 borderless=true {
+      plugin location="status-bar"
+    }
+  }
+}
+
